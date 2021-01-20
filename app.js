@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 //const morgan = require('morgan') // morgan keep tracks of routing means where the request comes from and where to going
-const {getPost} = require("./routes/post")
+const getPost = require("./routes/post")
 
 const myOwnMiddleWare = (req, res, next) => {
   console.log("This is Middle Ware");
@@ -13,7 +13,7 @@ const myOwnMiddleWare = (req, res, next) => {
 app.use(myOwnMiddleWare); // implemented morgan for our defined function
 
 
-app.get("/", getPost);
+app.use("/", getPost);
 
 app.listen(3030, ()=> {
   console.log('Port: 3030 is listening.');
